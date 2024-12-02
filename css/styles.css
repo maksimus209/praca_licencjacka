@@ -1,0 +1,227 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* Podstawowy reset */
+body, h1, h2, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.header {
+    background: #ffffff;
+    color: black;
+    padding: 10px 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.header img {
+    max-width: 100px; /* Maksymalna szerokość */
+    height: auto;     /* Automatyczna proporcja wysokości */
+}
+
+
+.nav ul {
+    display: flex;
+    gap: 60px;
+}
+
+.nav a {
+    color: #444444;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.nav a:hover {
+    color: #000000;
+}
+
+/*sekcja introduction*/
+.introduction {
+    background: #ffffff; /* Jasne tło sekcji */
+    padding: 200px 20px; /* Dodatkowy odstęp od góry i dołu */
+    text-align: center; /* Wyśrodkowanie tekstu */
+    height: 50vh; /* Wysokość sekcji = 100% wysokości okna przeglądarki */
+}
+
+.introduction .container {
+    max-width: 1200px; /* Maksymalna szerokość kontenera */
+    margin: 0 auto; /* Wyśrodkowanie kontenera */
+}
+
+.introduction h2 {
+    font-size: 2em; /* Większy rozmiar czcionki dla nagłówka */
+    margin-bottom: 20px; /* Odstęp poniżej nagłówka */
+    color: #333; /* Kolor tekstu */
+}
+
+.introduction .btn {
+    display: inline-block;
+    background-color: #007bff; /* Kolor tła przycisku */
+    color: white; /* Kolor tekstu */
+    padding: 10px 20px; /* Wewnętrzny odstęp przycisku */
+    font-size: 16px; /* Rozmiar czcionki */
+    text-decoration: none; /* Usunięcie podkreślenia z linku */
+    border-radius: 30px; /* Zaokrąglenie rogów */
+    transition: background-color 0.3s ease; /* Animacja zmiany koloru */
+}
+
+.introduction .btn:hover {
+    background-color: #0056b3; /* Zmiana koloru tła przycisku po najechaniu */
+}
+
+/* Sekcja Hero */
+.hero {
+    position: relative; /* Aby umożliwić pozycjonowanie pseudoelementu */
+    width: 100%; /* Szerokość kontenera */
+    height: 450px; /* Wysokość kontenera */
+    overflow: hidden; /* Ukrywa wszystko poza kontenerem */
+    background-color: white; /* Białe tło kontenera */
+    margin-bottom: 200px;
+}
+
+.hero img {
+    width: 100%; /* Dopasowanie szerokości obrazu do kontenera */
+    position: absolute; /* Aby umożliwić precyzyjne umiejscowienie */
+    top: -80%; /* Pozycja obrazu względem kontenera */
+    transform: scale(1.3); /* Powiększenie obrazu (zoom) */
+    object-fit: cover; /* Wypełnienie kontenera bez zniekształceń */
+}
+
+.hero::after {
+    content: ''; /* Wymagane do utworzenia pseudoelementu */
+    position: absolute; /* Pozycjonowanie względem kontenera */
+    bottom: 0; /* Gradient zaczyna się od dołu */
+    left: 0;
+    width: 100%; /* Gradient obejmuje całą szerokość kontenera */
+    height: 100%; /* Gradient obejmuje całą wysokość kontenera */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none; /* Wyłącza interakcje z pseudoelementem */
+}
+
+.information {
+    background-color: #ffffff; /* Jasne tło sekcji */
+    padding: 40px 20px; /* Dodatkowy odstęp od góry i dołu */
+    margin-top: 50px; /* Odstęp od poprzedzającej sekcji */
+}
+
+.information .container {
+    font-size: 30px;
+    font-weight: bold;
+    max-width: 1200px; /* Maksymalna szerokość kontenera */
+    margin: 0 auto; /* Wyśrodkowanie kontenera */
+    display: flex; /* Ustawienie flexbox */
+    flex-direction: column; /* Elementy w kolumnie */
+    gap: 20px; /* Odstęp między elementami */
+}
+
+.hidden {
+    opacity: 0; /* Element jest niewidoczny */
+    transform: translateY(50px); /* Element jest przesunięty w dół */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Animacja */
+}
+
+.hidden.show {
+    opacity: 1; /* Element staje się widoczny */
+    transform: translateY(0); /* Element wraca na swoje miejsce */
+}
+
+.info-container-1,
+.info-container-2,
+.info-container-3 {
+    display: flex; /* Użycie flexbox do łatwego wyrównania */
+    padding-bottom: 100px;
+}
+
+.info-container-1 img{
+    max-height: 500px;     /* Automatyczna proporcja wysokości */
+    width: auto; /* Maksymalna szerokość */
+    margin-right: 1%;
+}
+
+.info-1 {
+    color: #daa5a6;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 0 auto 0 0; /* Wyrównanie do lewej */
+    max-width: 600px; /* Maksymalna szerokość tekstu */
+}
+
+.info-2 {
+    color: #90A3E5;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 0 0 0 auto; /* Wyrównanie do prawej */
+    max-width: 600px; /* Maksymalna szerokość tekstu */
+}
+
+.info-container-2 img{
+    max-height: 600px;     /* Automatyczna proporcja wysokości */
+    width: auto; /* Maksymalna szerokość */
+    margin-left: 0;
+}
+
+.info-3 {
+    color: #668868;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 0 auto 0 0; /* Wyrównanie do lewej */
+    max-width: 600px; /* Maksymalna szerokość tekstu */
+}
+
+.info-container-3 img{
+    max-height: 400px;     /* Automatyczna proporcja wysokości */
+    width: auto; /* Maksymalna szerokość */
+    margin-left: 0;
+}
+
+/* Stylowanie przycisku */
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: 20px; /* Odległość od dołu strony */
+    right: 20px;  /* Odległość od prawej krawędzi */
+    background-color: #007bff; /* Kolor tła przycisku */
+    color: white;  /* Kolor tekstu (strzałka) */
+    border: none;
+    padding: 15px;
+    border-radius: 50%;  /* Zaokrąglony przycisk */
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Delikatny cień */
+    transition: background-color 0.3s ease;
+}
+
+.scroll-to-top-btn:hover {
+    background-color: #0056b3; /* Zmiana koloru przycisku przy najechaniu */
+}
+
+/* Stylizacja dla dużych ekranów */
+@media (min-width: 768px) {
+    .scroll-to-top-btn {
+        font-size: 24px; /* Zwiększenie rozmiaru strzałki na większych ekranach */
+    }
+}
+
+
+.footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
