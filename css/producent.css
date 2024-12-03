@@ -88,49 +88,15 @@ body {
     background-color: #0056b3; /* Zmiana koloru tła przycisku po najechaniu */
 }
 
-/* Sekcja Hero */
-.hero {
-    position: relative; /* Aby umożliwić pozycjonowanie pseudoelementu */
-    width: 100%; /* Szerokość kontenera */
-    height: 600px; /* Wysokość kontenera */
-    overflow: hidden; /* Ukrywa wszystko poza kontenerem */
-    background-color: white; /* Białe tło kontenera */
-    margin-bottom: 200px;
-}
-
-.hero img {
-    width: 100%; /* Dopasowanie szerokości obrazu do kontenera */
-    position: absolute; /* Aby umożliwić precyzyjne umiejscowienie */
-    top: -50%; /* Pozycja obrazu względem kontenera */
-    transform: scale(1.3); /* Powiększenie obrazu (zoom) */
-    object-fit: cover; /* Wypełnienie kontenera bez zniekształceń */
-}
-
-.hero::after {
-    content: ''; /* Wymagane do utworzenia pseudoelementu */
-    position: absolute; /* Pozycjonowanie względem kontenera */
-    bottom: 0; /* Gradient zaczyna się od dołu */
-    left: 0;
-    width: 100%; /* Gradient obejmuje całą szerokość kontenera */
-    height: 100%; /* Gradient obejmuje całą wysokość kontenera */
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 1) 100%);
-    pointer-events: none; /* Wyłącza interakcje z pseudoelementem */
-}
-
 .information {
-    background-color: #ffffff; /* Jasne tło sekcji */
-    padding: 40px 20px; /* Dodatkowy odstęp od góry i dołu */
-    margin-top: 50px; /* Odstęp od poprzedzającej sekcji */
-}
-
-.information .container {
-    font-size: 30px;
-    font-weight: 600;
-    max-width: 1200px; /* Maksymalna szerokość kontenera */
-    margin: 0 auto; /* Wyśrodkowanie kontenera */
-    display: flex; /* Ustawienie flexbox */
-    flex-direction: column; /* Elementy w kolumnie */
-    gap: 20px; /* Odstęp między elementami */
+    display: flex;
+    flex-wrap: wrap; /* Automatyczne zawijanie do nowej linii */
+    justify-content: center; /* Wyśrodkowanie elementów w poziomie */
+    gap: 20px; /* Odstępy między elementami */
+    margin: 20px auto;
+    max-width: 1200px; /* Opcjonalne ograniczenie szerokości kontenera */
+    padding-top: 50px;
+    padding-bottom: 200px;
 }
 
 .hidden {
@@ -144,66 +110,70 @@ body {
     transform: translateY(0); /* Element wraca na swoje miejsce */
 }
 
-.info-container-1,
-.info-container-2,
-.info-container-3 {
-    display: flex; /* Użycie flexbox do łatwego wyrównania */
-    padding: 50px;
-    border-radius: 25px;
+.producer {
+    display: flex;
+    flex-direction: column; /* Układ pionowy: obrazek nad tekstem */
+    align-items: center; /* Wyśrodkowanie w pionie */
+    text-align: center; /* Wyśrodkowanie tekstu */
+    width: calc(33.33% - 20px); /* Trzy elementy w jednym rzędzie z odstępami */
+    box-sizing: border-box; /* Uwzględnienie paddingu i marginesów w szerokości */
+    margin-bottom: 50px;
+    position: relative; /* Ustawienie pozycji dla absolutnego tekstu */
+    overflow: hidden; /* Ukrywa nadmiar elementów wychodzących poza obszar */
 }
 
-.info-container-1{
-    background-color: #f6dddf;
+.producer a {
+    color: inherit; /* Przejmuje kolor z elementu nadrzędnego */
+    padding-top: 25px;
 }
 
-.info-container-2{
-    background-color: #dce3fa;
+.producer a:visited {
+    color: inherit; /* Taki sam kolor dla odwiedzonych linków */
 }
 
-.info-container-3{
-    background-color: #d9fad9;
+.producer a:hover {
+    color: inherit; /* Taki sam kolor przy najechaniu myszką */
 }
 
-.info-container-1 img{
-    max-height: 500px;     /* Automatyczna proporcja wysokości */
-    width: auto; /* Maksymalna szerokość */
-    margin-right: 1%;
+
+.producer img {
+    max-width: 150px; /* Ograniczenie maksymalnej szerokości obrazka */
+    height: auto; /* Automatyczne proporcje wysokości */
+    border-radius: 8px; /* Zaokrąglone rogi (opcjonalne) */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Animacja transformacji i przyciemnienia */
 }
 
-.info-1 {
-    color: #bb7678;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 0 auto 0 0; /* Wyrównanie do lewej */
-    max-width: 600px; /* Maksymalna szerokość tekstu */
+.producer:hover img {
+    transform: scale(1.2); /* Powiększenie obrazka */
+    filter: brightness(0.7); /* Przyciemnienie obrazka */
 }
 
-.info-2 {
-    color: #617fe5;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 0 0 0 auto; /* Wyrównanie do prawej */
-    max-width: 600px; /* Maksymalna szerokość tekstu */
+.producer .overlay {
+    position: absolute;
+    top: 50%; /* Pozycjonowanie w środku */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Wyśrodkowanie */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0; /* Ukrycie tekstu */
+    transition: opacity 0.3s ease; /* Animacja pojawiania się tekstu */
+    pointer-events: none; /* Wyłączenie interakcji */
 }
 
-.info-container-2 img{
-    max-height: 600px;     /* Automatyczna proporcja wysokości */
-    width: auto; /* Maksymalna szerokość */
-    margin-left: 0;
+.producer:hover .overlay {
+    opacity: 1; /* Tekst pojawia się na hover */
 }
 
-.info-3 {
-    color: #668868;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 0 auto 0 0; /* Wyrównanie do lewej */
-    max-width: 600px; /* Maksymalna szerokość tekstu */
+.producer p {
+    margin-top: 10px;
+    font-size: 16px;
+    transition: opacity 0.3s ease; /* Płynne zanikanie */
 }
 
-.info-container-3 img{
-    max-height: 400px;     /* Automatyczna proporcja wysokości */
-    width: auto; /* Maksymalna szerokość */
-    margin-left: 0;
+.producer:hover p {
+    opacity: 0; /* Ukrycie tekstu */
 }
 
 /* Stylowanie przycisku */
@@ -218,7 +188,7 @@ body {
     border-radius: 50%;  /* Zaokrąglony przycisk */
     font-size: 20px;
     cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Delikatny cień */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Delikatny cień */
     transition: background-color 0.3s ease;
 }
 
@@ -232,7 +202,6 @@ body {
         font-size: 24px; /* Zwiększenie rozmiaru strzałki na większych ekranach */
     }
 }
-
 
 .footer {
     background: #333;
