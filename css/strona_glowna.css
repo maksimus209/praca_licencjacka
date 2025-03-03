@@ -1,0 +1,182 @@
+/* -----------------------------------
+   SEKCJA INTRODUCTION
+------------------------------------ */
+.introduction {
+    margin-bottom: 1%; /* Odstęp pod sekcją (opcjonalny) */
+}
+
+/* Kontener z tłem, zaokrąglonymi rogami
+   i wyśrodkowaniem w poziomie */
+.introduction-box {
+    width: 97%;
+    max-width: 1500px;
+    margin: 0 auto;
+    background-color: #000B3C;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Jeśli chcesz odstęp wewnętrzny (padding) – dodaj np.:
+       padding: 20px;
+    */
+}
+
+/* Wrapper – elastyczny układ obraz + tekst */
+.introduction-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Kolumna LEWA: obraz */
+.intro-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 70px;
+}
+.intro-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: contain;
+}
+
+/* Kolumna PRAWA: tekst i przycisk */
+.intro-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Nagłówki i akapity w introduction */
+.intro-text h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #F0F0F0;
+}
+.intro-text p {
+    font-size: 25px;
+    margin-bottom: 30px;
+    color: #d3d1d1;
+    max-width: 600px;
+    line-height: 1.4;
+}
+
+/* Przycisk "Więcej" */
+.intro-text .btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 12px 24px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+}
+.intro-text .btn:hover {
+    background-color: #0056b3;
+}
+
+/* -----------------------------------
+   SEKCJA INFORMATION
+------------------------------------ */
+.information {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.information .container {
+    width: 97%;
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Trzy bloki (info-container-1, 2, 3) z obrazem + tekstem */
+.info-container-1,
+.info-container-2,
+.info-container-3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    margin-bottom: 1%;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Kolorystyka i ewentualne odwrócenie kolejności */
+.info-container-1 {
+    background-color: #3a417e;
+    color: #F0F0F0;
+}
+.info-container-2 {
+    background-color: #383838;
+    color: #f2b3ff;
+}
+.info-container-3 {
+    background-color: #b8e3b8;
+    color: #152f16;
+}
+
+/* Kolumna OBRAZ w info-container (każdym) */
+.info-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 70px; /* Odstęp od tekstu */
+}
+.info-container-1 img,
+.info-container-2 img,
+.info-container-3 img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: contain;
+    max-height: 70vh;
+}
+
+/* Kolumna TEKST w info-container (każdym) */
+.info-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Nagłówki i akapity w info-container */
+.info-text h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.info-1,
+.info-2,
+.info-3 {
+    font-size: 25px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    line-height: 1.4;
+}
+
+/* Klasa .hidden – jeśli używasz animacji wchodzenia (np. IntersectionObserver) */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.hidden.show {
+    opacity: 1;
+    transform: translateY(0);
+}

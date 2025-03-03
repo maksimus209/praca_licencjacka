@@ -1,0 +1,96 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* Podstawowy reset */
+body, h1, h2, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3, .btn, nav a {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.header {
+    background: #ffffff;
+    color: black;
+    padding:  0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.header img {
+    max-width: 100px; /* Maksymalna szerokość */
+    height: auto;     /* Automatyczna proporcja wysokości */
+}
+
+
+.nav ul {
+    display: flex;
+    gap: 60px;
+}
+
+.nav a {
+    color: #444444;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.nav a:hover {
+    color: #000000;
+}
+
+/* Klasa .hidden (animacja wchodzenia) */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.hidden.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stopka */
+.footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+/* Przycisk powrotu na górę */
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+.scroll-to-top-btn:hover {
+    background-color: #0056b3;
+}
