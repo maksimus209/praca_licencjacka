@@ -83,7 +83,7 @@
 
 
 .producer img {
-    max-width: 150px; /* Ograniczenie maksymalnej szerokości obrazka */
+    max-width: 200px; /* Ograniczenie maksymalnej szerokości obrazka */
     height: auto; /* Automatyczne proporcje wysokości */
     border-radius: 8px; /* Zaokrąglone rogi (opcjonalne) */
     transition: transform 0.3s ease, filter 0.3s ease; /* Animacja transformacji i przyciemnienia */

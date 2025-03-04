@@ -65,7 +65,7 @@
 }
 
 /* Przycisk "Więcej" */
-.intro-text .btn {
+.btn {
     display: inline-block;
     background-color: #007bff;
     color: #ffffff;
@@ -75,7 +75,7 @@
     border-radius: 30px;
     transition: background-color 0.3s ease;
 }
-.intro-text .btn:hover {
+.btn:hover {
     background-color: #0056b3;
 }
 
@@ -116,16 +116,16 @@
 
 /* Kolorystyka i ewentualne odwrócenie kolejności */
 .info-container-1 {
-    background-color: #3a417e;
+    background-color: #412b6c;
     color: #F0F0F0;
 }
 .info-container-2 {
-    background-color: #383838;
-    color: #f2b3ff;
+    background-color: #ffffff;
+    color: #383838;
 }
 .info-container-3 {
-    background-color: #b8e3b8;
-    color: #152f16;
+    background-color: #7b5193;
+    color: #ffffff;
 }
 
 /* Kolumna OBRAZ w info-container (każdym) */
