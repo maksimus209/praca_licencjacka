@@ -11,7 +11,7 @@
     width: 97%;
     max-width: 1500px;
     margin: 0 auto;
-    background-color: #000B3C;
+    background: #000B3C;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     /* Jeśli chcesz odstęp wewnętrzny (padding) – dodaj np.:

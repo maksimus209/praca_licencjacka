@@ -1,28 +1,35 @@
 
 /*sekcja introduction*/
 .introduction {
-    background: #ffffff; /* Jasne tło sekcji */
-    padding: 180px 20px; /* Dodatkowy odstęp od góry i dołu */
     text-align: center; /* Wyśrodkowanie tekstu */
-    height: 50vh; /* Wysokość sekcji = 100% wysokości okna przeglądarki */
+    height: 80vh; /* Wysokość sekcji = 100% wysokości okna przeglądarki */
 }
 
 .introduction .container {
-    max-width: 1200px; /* Maksymalna szerokość kontenera */
-    margin: 0 auto; /* Wyśrodkowanie kontenera */
+    width: 97%;
+    max-width: 1500px;
+    height: 100%;
+    margin: 0 auto;
+    background-color: #375659;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Jeśli chcesz odstęp wewnętrzny (padding) – dodaj np.:
+       padding: 20px;
+    */
 }
 
 .introduction h2 {
     font-size: 60px; /* Większy rozmiar czcionki dla nagłówka */
     font-weight: lighter;
-    margin-bottom: 20px; /* Odstęp poniżej nagłówka */
-    color: #333; /* Kolor tekstu */
+    padding-top: 13%;
+    padding-bottom: 20px;
+    color: #F0F0F0; /* Kolor tekstu */
 }
 
 .introduction .btn {
     display: inline-block;
-    background-color: #007bff; /* Kolor tła przycisku */
-    color: white; /* Kolor tekstu */
+    background-color: #F0F0F0; /* Kolor tła przycisku */
+    color: #153236; /* Kolor tekstu */
     padding: 10px 20px; /* Wewnętrzny odstęp przycisku */
     font-size: 16px; /* Rozmiar czcionki */
     text-decoration: none; /* Usunięcie podkreślenia z linku */
@@ -31,7 +38,7 @@
 }
 
 .introduction .btn:hover {
-    background-color: #0056b3; /* Zmiana koloru tła przycisku po najechaniu */
+    background-color: #ffffff; /* Zmiana koloru tła przycisku po najechaniu */
 }
 
 .information {
@@ -83,11 +90,14 @@
 
 
 .producer img {
-    max-width: 200px; /* Ograniczenie maksymalnej szerokości obrazka */
-    height: auto; /* Automatyczne proporcje wysokości */
-    border-radius: 8px; /* Zaokrąglone rogi (opcjonalne) */
-    transition: transform 0.3s ease, filter 0.3s ease; /* Animacja transformacji i przyciemnienia */
+    width: 200px;          /* Stała szerokość */
+    height: 250px;        /* Większa wysokość, by telefon wyglądał naturalnie */
+    object-fit: contain;   /* Obraz dostosowuje się bez przycinania */
+    border-radius: 8px;    /* Opcjonalne zaokrąglenie */
+    padding: 10px;         /* Dodanie wewnętrznego odstępu */
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
+
 
 .producer:hover img {
     transform: scale(1.2); /* Powiększenie obrazka */
