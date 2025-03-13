@@ -34,3 +34,52 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(container);
     });
 });
+
+/* Funkcja animująca licznik od start do end w ciągu duration ms */
+function animateValue(element, start, end, duration) {
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (startTime === null) {
+            startTime = currentTime;
+        }
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const currentValue = Math.floor(start + (end - start) * progress);
+
+        // Separator tysięcy (lokalizacja PL)
+        element.textContent = currentValue.toLocaleString("pl-PL");
+
+        if (progress < 1) {
+            requestAnimationFrame(animation);
+        }
+    }
+
+    requestAnimationFrame(animation);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const countElement = document.getElementById("smartphoneCount");
+    const mainSection = document.querySelector(".main");
+    let hasAnimated = false;  // flaga, by licznik nie uruchomił się wielokrotnie
+
+    // Tworzymy Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            // Jeżeli sekcja jest w polu widzenia i animacja nie była jeszcze uruchomiona
+            if (entry.isIntersecting && !hasAnimated) {
+                animateValue(countElement, 0, 4500000000, 2000);
+                hasAnimated = true;
+                // Odpinamy obserwację, aby animacja była jednokrotna
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2 // musi być widoczne min. 20% sekcji, żeby wystartować
+    });
+
+    // Rozpoczynamy obserwację sekcji .main
+    observer.observe(mainSection);
+});
+
+
