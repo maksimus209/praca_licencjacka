@@ -60,7 +60,7 @@ function animateValue(element, start, end, duration) {
 
 document.addEventListener("DOMContentLoaded", () => {
     const countElement = document.getElementById("smartphoneCount");
-    const mainSection = document.querySelector(".main");
+    const mainSection = document.querySelector(".count");
     let hasAnimated = false;  // flaga, by licznik nie uruchomił się wielokrotnie
 
     // Tworzymy Intersection Observer
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         threshold: 0.2 // musi być widoczne min. 20% sekcji, żeby wystartować
     });
 
-    // Rozpoczynamy obserwację sekcji .main
+    // Rozpoczynamy obserwację sekcji .count
     observer.observe(mainSection);
 });
 

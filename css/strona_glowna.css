@@ -238,12 +238,12 @@ Akapity w info-container
 
 /*
 -----------------------------------
-SEKCJA GŁÓWNA
+SEKCJA LICZNIK
 -----------------------------------
 */
 
-.main{
-    margin-top: 10%;
+.count{
+    margin-top: 8%;
 }
 
 .counter-wrapper {
@@ -265,15 +265,82 @@ SEKCJA GŁÓWNA
 
 /*
 -----------------------------------
-Klasa .hidden do animacji wchodzenia
+SEKCJA GŁÓWNA / ARTYKUŁOWA
 -----------------------------------
 */
-.hidden {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+/* Blok artykułu */
+.article-content {
+    width: 100%;
+    margin-top: 8%; /* Odstęp od góry (opcjonalnie) */
 }
-.hidden.show {
-    opacity: 1;
-    transform: translateY(0);
+
+/* Obraz na górze, pełna szerokość */
+.article-image {
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%; /* Odstęp od tekstu */
 }
+
+.article-image img {
+    display: block; /* Usuwa ewentualny odstęp inline */
+    width: 100%;    /* Pełna szerokość kontenera */
+    height: auto;   /* Zachowanie proporcji */
+    object-fit: cover; /* Możesz zmienić na contain, jeśli wolisz całe zdjęcie bez przycięcia */
+}
+
+/* Kontener na tekst */
+.article-content .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Paragrafy */
+.article-content p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* Kontener "bieżni" */
+.scrolling-banner {
+    width: 100%;           /* Szerokość na całą stronę */
+    overflow: hidden;      /* Ukrywamy wszystko, co wyjdzie poza obszar */
+    position: relative;    /* Potrzebne do animacji */
+    height: 450px;         /* Przykładowa wysokość, dopasuj do swojego obrazu */
+    margin: 40px 0;        /* Odstęp wokół (opcjonalne) */
+}
+
+/* Lista kopiowanych obrazów */
+.scrolling-content {
+    display: flex;         /* Ustawiamy obrazki w jednym rzędzie */
+    animation: scroll-left 20s linear infinite;
+    /* - 20s: czas, w którym baner przewinie się od zera do końca.
+       - linear: stała prędkość przesuwu
+       - infinite: powtarzaj w kółko */
+}
+
+/* Same obrazki */
+.scrolling-content img {
+    display: block;        /* Usuwamy ewentualne odstępy dookoła */
+    height: auto;          /* Każdy obraz wypełnia "scrolling-banner" na wysokość */
+    width: 100%;           /* Zachowujemy proporcje */
+    object-fit: cover;     /* Wypełnianie w pionie */
+}
+
+/* Kluczowe klatki animacji */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* UWAGA:
+           -100% przesunie całą szerokość .scrolling-content w lewo,
+           dzięki czemu 2. kopia obrazu "wejdzie" na miejsce 1. */
+        transform: translateX(-100%);
+    }
+}
+
