@@ -1,0 +1,205 @@
+/*
+-----------------------------------
+SEKCJA LICZNIK
+-----------------------------------
+*/
+
+.count{
+    margin-top: 8%;
+    min-height: 50vh;
+}
+
+.counter-wrapper {
+    text-align: center;
+}
+
+/* Główny nagłówek z licznikiem */
+#smartphoneCount {
+    font-size: 8rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+/* Opis pod licznikiem */
+.counter-description {
+    font-size: 2rem;
+    color: #555;
+}
+
+/*
+-----------------------------------
+SEKCJA GŁÓWNA / ARTYKUŁOWA
+-----------------------------------
+*/
+
+/* Blok artykułu */
+.article-content {
+    width: 100%;
+    margin-top: 8%; /* Odstęp od góry (opcjonalnie) */
+}
+
+/* Obraz na górze, pełna szerokość */
+.article-image {
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%; /* Odstęp od tekstu */
+}
+
+.article-image img {
+    display: block; /* Usuwa ewentualny odstęp inline */
+    width: 100%;    /* Pełna szerokość kontenera */
+    height: auto;   /* Zachowanie proporcji */
+    object-fit: cover; /* Możesz zmienić na contain, jeśli wolisz całe zdjęcie bez przycięcia */
+}
+
+/* Kontener na tekst */
+.article-content .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Paragrafy */
+.article-content p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* Kontener "bieżni" */
+.scrolling-banner {
+    width: 100%;           /* Szerokość na całą stronę */
+    overflow: hidden;      /* Ukrywamy wszystko, co wyjdzie poza obszar */
+    position: relative;    /* Potrzebne do animacji */
+    height: 450px;         /* Przykładowa wysokość, dopasuj do swojego obrazu */
+    margin: 40px 0;        /* Odstęp wokół (opcjonalne) */
+}
+
+/* Lista kopiowanych obrazów */
+.scrolling-content {
+    display: flex;         /* Ustawiamy obrazki w jednym rzędzie */
+    animation: scroll-left 20s linear infinite;
+    /* - 20s: czas, w którym baner przewinie się od zera do końca.
+       - linear: stała prędkość przesuwu
+       - infinite: powtarzaj w kółko */
+}
+
+/* Same obrazki */
+.scrolling-content img {
+    display: block;        /* Usuwamy ewentualne odstępy dookoła */
+    height: auto;          /* Każdy obraz wypełnia "scrolling-banner" na wysokość */
+    width: 100%;           /* Zachowujemy proporcje */
+    object-fit: cover;     /* Wypełnianie w pionie */
+}
+
+/* Kluczowe klatki animacji */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* UWAGA:
+           -100% przesunie całą szerokość .scrolling-content w lewo,
+           dzięki czemu 2. kopia obrazu "wejdzie" na miejsce 1. */
+        transform: translateX(-100%);
+    }
+}
+
+/* SLIDER – kontener na wszystkie karty */
+.tools-slider {
+    width: 100%;
+    max-width: 1200px;   /* Dopasuj do potrzeb */
+    margin: 0 auto;   /* wyśrodkowanie całego slidera */
+    overflow: hidden;
+    position: relative;  /* aby móc pozycjonować przyciski */
+    padding: 20px 0;       /* ewentualny odstęp pionowy dla estetyki */
+    box-sizing: border-box;
+}
+
+/* Wrapper, który przesuwamy w poziomie */
+.tools-slider-wrapper {
+    display: flex;       /* karty w jednym rzędzie */
+    transition: transform 0.4s ease;  /* płynna animacja przesunięcia */
+    /* Nie podajemy overflow-x: auto, bo przewijamy JS-em i przyciskami */
+}
+
+/* POJEDYNCZA KARTA */
+.tool-card {
+    flex: 0 0 900px;     /* Karta zajmie 100% dostępnej szerokości slidera */
+    box-sizing: border-box;
+    margin: 0 150px;
+    padding: 50px 80px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;   /* wyrównanie tekstu w środku */
+}
+
+.tool-card-header {
+    display: flex;
+    gap: 10px;
+    /* Cokolwiek innego tu masz */
+}
+
+
+/* Nagłówek karty */
+.tool-card h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Obrazek w karcie (500x500 px) – dopasuj tak, by nie był za duży */
+.tool-card img {
+    width: 50px;      /* zredukuj z 500px do ~200px dla proporcji obok h2 */
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+/* Przycisk lewy/prawy */
+.slider-btn {
+    position: absolute;
+    top: 50%;          /* Vertically centrowanie w sliderze */
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.2);
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;       /* nad slider-wrapper, aby przycisk był klikalny */
+    outline: none;
+}
+
+/* Strzałka lewa */
+.slider-btn-left {
+    left: 10px;        /* Odstęp od lewej krawędzi slidera */
+}
+
+/* Strzałka prawa */
+.slider-btn-right {
+    right: 10px;       /* Odstęp od prawej krawędzi slidera */
+}
+
+/* Hover na przyciskach */
+.slider-btn:hover {
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Responsywne dopasowanie, np. na mniejszych ekranach */
+@media (max-width: 768px) {
+    .tool-card h2 {
+        font-size: 1.5rem;
+    }
+    .tool-card img {
+        width: 150px;
+    }
+}

@@ -83,3 +83,33 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+document.addEventListener("DOMContentLoaded", () => {
+    const wrapper = document.querySelector(".tools-slider-wrapper");
+    const leftBtn = document.querySelector(".slider-btn-left");
+    const rightBtn = document.querySelector(".slider-btn-right");
+    const slides = document.querySelectorAll(".tool-card");
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    // Obsługa kliknięcia lewej strzałki
+    leftBtn.addEventListener("click", () => {
+        // Zmniejszamy index (przesuwamy wstecz), ale nie pozwalamy spaść poniżej 0
+        currentIndex = Math.max(currentIndex - 1 + totalSlides) % totalSlides;
+        updateSlider();
+    });
+
+    // Obsługa kliknięcia prawej strzałki
+    rightBtn.addEventListener("click", () => {
+        // Zwiększamy index, nie przekraczamy totalSlides - 1
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlider();
+    });
+
+    function updateSlider() {
+        // Każda karta ma szerokość 100%, więc przesuwamy wrapper o (currentIndex * -100%)
+        wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+});
+
+
