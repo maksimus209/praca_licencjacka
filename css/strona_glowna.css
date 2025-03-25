@@ -103,8 +103,8 @@ Przycisk (również używany w sekcji information)
 */
 .btn {
     display: inline-block;
-    background-color: #007bff;
-    color: #ffffff;
+    background: linear-gradient(90deg, #ffffff 0%, #f3f6ff 100%);
+    color: #984688;
     padding: 12px 24px;
     font-size: 1rem;
     text-decoration: none;
@@ -112,9 +112,8 @@ Przycisk (również używany w sekcji information)
     transition: background-color 0.3s ease;
 }
 .btn:hover {
-    background-color: #0056b3;
+    background: linear-gradient(90deg, #f6f6f6 0%, #e0e0e0 100%);
 }
-
 /*
 -----------------------------------
 SEKCJA INFORMATION (3 kontenery)
@@ -173,15 +172,9 @@ Kolor tła dla info-container-1, 2, 3
     color: #505050;
 }
 .info-container-2 {
-    background: linear-gradient(
-            to bottom,
-            #a6a6a6 0%,
-            #989898 10%,
-            #afacac 40%,
-            #b4b4b4 75%,
-            #cccaca 100%
-    );
-    color: #ffffff;
+    flex-direction: row-reverse;
+    background: white;
+    color: #606060;
 }
 .info-container-3 {
     background-color: #cf76a4;
@@ -218,6 +211,11 @@ Tekst w info-container
     justify-content: center;
     align-items: flex-start;
 }
+
+.info-container-2 .info-text {
+    padding-left: 10%;
+}
+
 .info-text h2 {
     font-size: 3rem;
     margin-bottom: 10px;
@@ -234,6 +232,190 @@ Akapity w info-container
     max-width: 600px;
     line-height: 1.4;
 }
+
+/*************
+Sekcja links
+**************/
+.links {
+    padding: 40px 0;
+}
+
+.links .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.links h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/*
+Układ linków w siatce (4 boxy):
+Jeśli chcesz 2 w rzędzie -> repeat(auto-fit, minmax(300px, 1fr)).
+Dla 4 w rzędzie -> minmax(250px, 1fr) itp.
+*/
+.links-grid {
+    /* Zamieniamy układ siatki na jedną kolumnę */
+    display: grid;
+    grid-template-columns: 1fr; /* tylko jedna kolumna */
+    gap: 20px;                  /* odstęp między kafelkami */
+}
+
+/* Kafelek (link-box) */
+.link-box {
+    max-width: 900px;    /* dostosuj do potrzeb */
+    width: 100%;
+    margin: 0 auto;      /* wyśrodkowanie */
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+/* Efekt powiększenia przy hoverze (opcjonalnie) */
+.link-box:hover {
+    transform: scale(1.02);
+}
+
+.link-box h4 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+/* Tekst opisowy, domyślnie ukryty */
+.link-description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0 70px 0;
+    max-height: 0;            /* wys. 0 => ukryty */
+    overflow: hidden;         /* zapobiega widocznemu tekstowi */
+    opacity: 0;               /* przezroczysty */
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/*
+Na hover .link-box -> odkryj tekst:
+ustawiamy max-height wystarczająco dużą wartość na
+typowy rozmiar opisu (np. 150px, 200px, itp.)
+*/
+.link-box:hover .link-description {
+    max-height: 200px;
+    opacity: 1;
+    margin-bottom: 15px; /* spacing pod opisem */
+}
+
+.links-actions {
+    display: flex;
+    flex-wrap: wrap;      /* by ewentualnie łamało się w mniejszych ekranach */
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;     /* odstęp nad przyciskami */
+}
+
+/* Przyciski z przyjemnym gradientem, zachowujące dotychczasowe odcienie */
+
+/* 1) Podstawowa klasa action-btn (bazowy niebieski) */
+.action-btn {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #3251c2 0%, #4062d6 100%);
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    border: none;
+}
+.action-btn:hover {
+    background: linear-gradient(90deg, #3657ce 0%, #4a6ce0 100%);
+}
+
+/* 2) action-btn-1 (odwrócony: białe tło + obramowanie niebieskie) */
+.action-btn-1 {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border-radius: 30px;
+    border: 2px solid #3251c2;
+    /* Używamy delikatnego gradientu, ale z bardzo jasnym wypełnieniem */
+    background: linear-gradient(90deg, #ffffff 0%, #f3f6ff 100%);
+    color: #3251c2;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+.action-btn-1:hover {
+    background: linear-gradient(90deg, #f6f6f6 0%, #e0e0e0 100%);
+}
+
+/* 3) action-btn-2 (jasnoniebieski) */
+.action-btn-2 {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #61aae5 0%, #6ebbe9 100%);
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    border: none;
+}
+.action-btn-2:hover {
+    background: linear-gradient(90deg, #617fe5 0%, #738fdd 100%);
+}
+
+/* 4) action-btn-3 (zgodny z #588358) */
+.action-btn-3 {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #588358 0%, #669966 100%);
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    border: none;
+}
+.action-btn-3:hover {
+    background: linear-gradient(90deg, #496c49 0%, #5f7d5f 100%);
+}
+
+/* 5) action-btn-4 (z #a93f3f) */
+.action-btn-4 {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #a93f3f 0%, #c14b4b 100%);
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    border: none;
+}
+.action-btn-4:hover {
+    background: linear-gradient(90deg, #8c3333 0%, #a23f3f 100%);
+}
+
+/* 6) action-btn-5 (szary #797979) */
+.action-btn-5 {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #797979 0%, #909090 100%);
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    border: none;
+}
+.action-btn-5:hover {
+    background: linear-gradient(90deg, #707070 0%, #898989 100%);
+}
+
+
 
 
 

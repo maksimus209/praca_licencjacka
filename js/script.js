@@ -1,19 +1,21 @@
-// Pobieranie przycisku
-const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+// Funkcja do płynnego przewijania do góry
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
 
-// Funkcja do wyświetlania/ukrywania przycisku
-window.onscroll = function() {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        scrollToTopBtn.style.display = "block"; // Pokazujemy przycisk, gdy przewinięto w dół
+// Opcjonalnie: pokazuj / ukrywaj przycisk w zależności od scrolla
+window.addEventListener("scroll", function() {
+    const scrollButton = document.getElementById("scrollButton");
+    if (window.scrollY > 300) {
+        scrollButton.classList.remove("hidden");
     } else {
-        scrollToTopBtn.style.display = "none"; // Ukrywamy przycisk, gdy jesteśmy na górze strony
+        scrollButton.classList.add("hidden");
     }
-};
+});
 
-// Funkcja do przewijania na górę po kliknięciu
-scrollToTopBtn.onclick = function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Płynne przewijanie do góry
-};
 
 
 document.addEventListener('DOMContentLoaded', () => {

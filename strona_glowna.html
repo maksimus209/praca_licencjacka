@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Porównanie smartfonów: zastosowanie SI w najpopularniejszych modelach znanych producentów</title>
+    <title>Porównanie smartfonów: zastosowanie AI w najpopularniejszych modelach znanych producentów</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/strona_glowna.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
         <nav class="nav">
             <ul>
                 <li><a href="strona_glowna.html">Strona główna</a></li>
-                <li><a href="si.html">SI</a></li>
+                <li><a href="si.html">AI</a></li>
                 <li><a href="producent.html">Producenci</a></li>
                 <li><a href="">Forum</a></li>
                 <li><a href="serwis.html">O serwisie</a></li>
@@ -59,10 +59,9 @@
                 <h2>O portalu</h2>
                 <p class="info-1">
                     Witaj na portalu, który porównuje smartfony znanych producentów z integrowaną sztuczną
-                    inteligencją. Strona ma na celu zaprezentowanie technologii SI w kontekście
+                    inteligencją. Strona ma na celu zaprezentowanie technologii AI w kontekście
                     telefonów komórkowych oraz przedstawienie innowacyjnych rozwiązań w branży mobilnej
                 </p>
-                <a href="producent.html" class="btn">Przejdź do porównania</a>
             </div>
         </div>
 
@@ -74,10 +73,8 @@
                 <h2>Historia i funkcje AI</h2>
                 <p class="info-2">
                     Strona przekazuje informacje na temat poszczególnych producentów smartfonów, ich historii oraz
-                    narzędzi SI w systemach operacyjnych takich produktów. Tutaj możesz też dzielić się
-                    swoimi doświadczeniami z korzystania z takich urządzeń oraz zadawać pytania innym użytkownikom
+                    narzędzi AI w oprogramowaniach takich produktów.
                 </p>
-                <a href="#" class="btn">Czytaj</a>
             </div>
         </div>
 
@@ -89,16 +86,87 @@
             <div class="info-text">
                 <h2>Dla kogo?</h2>
                 <p class="info-3">
-                    Ta strona jest skierowana do wszystkich osób, które interesują się nowinkami technologicznymi,
-                    sztuczną inteligencją, a także do osób planujących zakup smartfona z AI, szukających informacji na temat danych modeli
+                    Strona jest skierowana do pasjonatów nowinek AI i osób szukających smartfona z takimi funkcjami.
+                    Dla lepszego doświadczenia możesz zadawać pytania lub odpowiadać innym użytkownikom za pośrednictwem forum.
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Przycisk "Scroll to top" -->
-<button id="scrollToTopBtn" class="scroll-to-top-btn">⇧</button>
+<section class="links hidden">
+    <div class="container">
+        <h3>Odwiedź nasze sekcje</h3>
+        <div class="links-grid">
+
+            <!-- Kafelek 1: Zaloguj / Załóż konto -->
+            <div class="link-box">
+                <h4>Zaloguj się lub załóż konto</h4>
+                <!-- Tekst ukryty domyślnie, pojawia się na hover -->
+                <p class="link-description">
+                    Uzyskaj pełny dostęp do forum i dodatkowe funkcje serwisu.
+                </p>
+                <div class="links-actions">
+                    <a href="" class="btn action-btn">Zaloguj się</a>
+                    <a href="" class="btn action-btn-1">Załóż konto</a>
+                </div>
+            </div>
+
+            <!-- Kafelek 2: Podstrona AI -->
+            <div class="link-box">
+                <h4>Dowiedz się więcej o AI</h4>
+                <p class="link-description">
+                    Odkryj, w jaki sposób sztuczna inteligencja jest integrowana w smartfony,
+                    co zapewnia działanie sztucznej inteligencji oraz jakie narzędzia są najbardziej
+                    popularne wśród użytkowników.
+                </p>
+                <div class="links-actions">
+                    <a href="si.html" class="btn action-btn-2">Przejdź do sekcji AI</a>
+                </div>
+            </div>
+
+            <div class="link-box">
+                <h4>Porównywarka</h4>
+                <p class="link-description">
+                    Porównaj smartfony różnych producentów ze sobą. Sprawdź, jakie możliwości AI, każdy z nich posiada.
+                    Masz też dostęp do szczegółowej informacji na temat każdego producenta osobno.
+                </p>
+                <div class="links-actions">
+                    <a href="producent.html" class="btn action-btn-3">Porównaj smartfony</a>
+                </div>
+            </div>
+
+            <!-- Kafelek 3: Forum -->
+            <div class="link-box">
+                <h4>Forum</h4>
+                <p class="link-description">
+                    Podziel się wrażeniami, zadaj pytanie lub znajdź odpowiedzi dotyczące smartfonów z AI.
+                    Dowiedz się, co inni myślą o konkretnych modelach i funkcjach.
+                </p>
+                <div class="links-actions">
+                    <a href="forum.html" class="btn action-btn-4">Odwiedź forum</a>
+                </div>
+            </div>
+
+            <!-- Kafelek 4: O serwisie -->
+            <div class="link-box">
+                <h4>O serwisie</h4>
+                <div class="links-actions">
+                    <a href="serwis.html" class="btn action-btn-5">Więcej informacji</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Przycisk "Scroll To Top" inspirowany stylem z uiverse.io -->
+<button class="scroll-button" id="scrollButton" onclick="scrollToTop()">
+    <svg width="24" height="24" viewBox="0 0 24 24">
+        <path d="M12 4l-8 8h16z"/>
+    </svg>
+</button>
+
 
 <footer class="footer">
     <div class="container">

@@ -50,7 +50,7 @@ h1, h2, h3, .btn, nav a {
 .nav a {
     color: #444444;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .nav a:hover {
@@ -77,21 +77,45 @@ h1, h2, h3, .btn, nav a {
     margin-top: 20px;
 }
 
-/* Przycisk powrotu na górę */
-.scroll-to-top-btn {
+/* Podstawowy styl przycisku "Scroll To Top" */
+.scroll-button {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #007bff;
-    color: #fff;
+    bottom: 40px;       /* odległość od dołu ekranu */
+    right: 40px;        /* odległość od prawej krawędzi */
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #92FFC0 0%, #002661 100%);
     border: none;
-    padding: 15px;
     border-radius: 50%;
-    font-size: 20px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+    outline: none;
+    /* Styl wizualny / cieniowanie */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Animacje przejścia */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;       /* by przycisk był zawsze na wierzchu */
 }
-.scroll-to-top-btn:hover {
-    background-color: #0056b3;
+
+/* Ukryty domyślnie (jeśli chcesz, by pojawiał się dopiero po przewinięciu np. 300px) */
+.scroll-button.hidden {
+    opacity: 0;
+    pointer-events: none; /* by nie był klikalny, gdy niewidoczny */
+    transform: translateY(20px); /* lekkie przesunięcie w dół dla efektu */
 }
+
+/* Ikona (SVG) wewnątrz przycisku */
+.scroll-button svg {
+    fill: #ffffff;
+    width: 24px;
+    height: 24px;
+}
+
+/* Możesz dodać efekt hover */
+.scroll-button:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+}
+

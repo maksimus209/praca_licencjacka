@@ -177,6 +177,7 @@ SEKCJA GŁÓWNA / ARTYKUŁOWA
     cursor: pointer;
     z-index: 10;       /* nad slider-wrapper, aby przycisk był klikalny */
     outline: none;
+    transition: background-color 0.3s ease;
 }
 
 /* Strzałka lewa */
