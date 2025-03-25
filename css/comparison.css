@@ -1,0 +1,25 @@
+/* Kontener główny porównywarki */
+.compare-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    font-family: 'Montserrat', sans-serif;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+.compare-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #984688; /* nawiązanie do fioletów z gradientu w strona_glowna.css */
+    text-align: center;
+}
+
+.compare-container p {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 20px;
+    text-align: center;
+}
