@@ -1,42 +1,19 @@
 <?php
-require_once 'autoryzacja.php'; // łączy z bazą ($conn)
+require_once 'autoryzacja.php'; // <-- plik z obiektem $conn do bazy
 
-// [1] POBRANIE LISTY PRODUCENTÓW / MODELI (opcjonalnie)
+// Pobranie listy producentów
 $sql = "SELECT idProducent, nazwa FROM Phones ORDER BY nazwa ASC";
 $res = $conn->query($sql);
 $phones = [];
 while ($row = $res->fetch_assoc()) {
     $phones[$row['idProducent']] = $row['nazwa'];
 }
-
-// [2] Sprawdzamy, czy wysłano zapytanie o porównanie
-$selectedIDs = []; // przechowa idProducent
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['compare'])) {
-    // w formie JSON lub w formie hidden inputów: brand1, brand2, brand3
-    $selectedIDs = array_filter([
-        $_POST['brand1'] ?? null,
-        $_POST['brand2'] ?? null,
-        $_POST['brand3'] ?? null
-    ]);
-
-    // jeśli >= 2, tworzymy zapytanie
-    if (count($selectedIDs) >= 2) {
-        $inClause = implode(',', array_map('intval', $selectedIDs));
-        $sqlAi = "SELECT * FROM AI_Tools WHERE idProducent IN ($inClause)";
-        $rAi = $conn->query($sqlAi);
-        $aiRows = [];
-        while ($a = $rAi->fetch_assoc()) {
-            $aiRows[$a['idProducent']] = $a;
-        }
-    }
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Porównywarka AI w smartfonach</title>
+    <title>Porównywarka</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/comparison.css">
 </head>
@@ -56,61 +33,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['compare'])) {
         </nav>
     </div>
 </header>
+
 <section class="comparison">
-<div class="compare-container">
-    <h1>Smartfony z AI – Porównywarka</h1>
-    <p>Wybierz maksymalnie 3 producentów, aby porównać narzędzia AI.</p>
+    <div class="compare-container">
+        <h1>Smartfony z AI – Porównywarka</h1>
+        <p>Wybierz maksymalnie 4 producentów, aby porównać narzędzia AI.</p>
 
-    <!-- Sekcja: Wybór producentów -->
-    <form method="POST" class="compare-form">
-        <!-- inputy hidden -->
-        <input type="hidden" name="brand1" id="brand1" />
-        <input type="hidden" name="brand2" id="brand2" />
-        <input type="hidden" name="brand3" id="brand3" />
-
-        <div id="chosenList" class="chosen-list">
-            <!-- tu wyświetlimy nazwy wybranych producentów -->
+        <!-- Lista wszystkich producentów (przycisk +) -->
+        <div id="allBrands" class="brand-pool">
+            <?php foreach ($phones as $pid => $pname): ?>
+                <div class="brand-option" data-id="<?= $pid; ?>">
+                    <?= htmlspecialchars($pname); ?>
+                    <button class="add-btn">+</button>
+                </div>
+            <?php endforeach; ?>
         </div>
 
-        <button type="submit" name="compare" id="compareBtn" class="compare-btn" disabled>Porównaj</button>
-    </form>
+        <!-- Formularz: wysyłamy brand1, brand2, brand3 metodą GET do 'wynik.php' -->
+        <form method="GET" action="wynik.php" class="compare-form">
+            <input type="hidden" name="brand1" id="brand1" />
+            <input type="hidden" name="brand2" id="brand2" />
+            <input type="hidden" name="brand3" id="brand3" />
+            <input type="hidden" name="brand4" id="brand4" />
 
-    <!-- Dropdown z listą producentów (początkowo ukryty) -->
-    <div id="brandDropdown" class="brand-dropdown">
-        <ul>
-            <?php foreach ($phones as $pid => $pname): ?>
-                <li data-id="<?= $pid; ?>"><?= $pname; ?></li>
-            <?php endforeach; ?>
-        </ul>
+            <button type="submit" name="compare" id="compareBtn" class="compare-btn" disabled>Porównaj</button>
+
+            <!-- Poniżej wyświetlą się wybrani producenci (przycisk ×) -->
+            <div id="chosenList" class="chosen-list"></div>
+        </form>
     </div>
-
-    <!-- Gdy POST z co najmniej 2 brandami -->
-    <?php if (!empty($selectedIDs) && count($selectedIDs)>=2): ?>
-        <h2>Wyniki porównania</h2>
-        <table class="comparison-table">
-            <tr>
-                <th>Narzędzie AI</th>
-                <?php foreach($selectedIDs as $bid): ?>
-                    <th><?= $phones[$bid] ?? '???'; ?></th>
-                <?php endforeach; ?>
-            </tr>
-            <?php
-            // załóżmy, że nazwy kolumn w AI_Tools:
-            $toolsList = ['asystentGłosowy','anlizaDanych','wspomaganieMultim','edycjaTresc','edycjaMultim','generowanieTresc','generowanieMultim','tlumacz','chatbot'];
-            foreach($toolsList as $tool) {
-                echo "<tr>";
-                echo "<td>$tool</td>";
-                foreach($selectedIDs as $bid) {
-                    $val = $aiRows[$bid][$tool] ?? '';
-                    echo "<td>$val</td>";
-                }
-                echo "</tr>";
-            }
-            ?>
-        </table>
-    <?php endif; ?>
-</div>
 </section>
+
+<!-- Przycisk "Scroll To Top" inspirowany stylem z uiverse.io -->
+<button class="scroll-button" id="scrollButton" onclick="scrollToTop()">
+    <svg width="24" height="24" viewBox="0 0 24 24">
+        <path d="M12 4l-8 8h16z"/>
+    </svg>
+</button>
+
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2025 Smartfony z SI - Praca licencjacka</p>
+    </div>
+</footer>
 
 <script src="js/compare.js"></script>
 </body>

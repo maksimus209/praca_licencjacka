@@ -49,7 +49,6 @@
     margin: 20px auto;
     max-width: 1200px; /* Opcjonalne ograniczenie szerokości kontenera */
     padding-top: 50px;
-    padding-bottom: 200px;
 }
 
 .hidden {
@@ -132,37 +131,110 @@
     opacity: 0; /* Ukrycie tekstu */
 }
 
-/* Stylowanie przycisku */
-.scroll-to-top-btn {
-    position: fixed;
-    bottom: 20px; /* Odległość od dołu strony */
-    right: 20px;  /* Odległość od prawej krawędzi */
-    background-color: #007bff; /* Kolor tła przycisku */
-    color: white;  /* Kolor tekstu (strzałka) */
-    border: none;
-    padding: 15px;
-    border-radius: 50%;  /* Zaokrąglony przycisk */
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Delikatny cień */
-    transition: background-color 0.3s ease;
+/*************
+Sekcja links
+**************/
+.links {
+    padding: 40px 0;
 }
 
-.scroll-to-top-btn:hover {
-    background-color: #0056b3; /* Zmiana koloru przycisku przy najechaniu */
+.links .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Stylizacja dla dużych ekranów */
-@media (min-width: 768px) {
-    .scroll-to-top-btn {
-        font-size: 24px; /* Zwiększenie rozmiaru strzałki na większych ekranach */
-    }
-}
-
-.footer {
-    background: #333;
-    color: #fff;
+.links h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
     text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
+    color: #333;
 }
+
+/*
+Układ linków w siatce (4 boxy):
+Jeśli chcesz 2 w rzędzie -> repeat(auto-fit, minmax(300px, 1fr)).
+Dla 4 w rzędzie -> minmax(250px, 1fr) itp.
+*/
+.links-grid {
+    /* Zamieniamy układ siatki na jedną kolumnę */
+    display: grid;
+    grid-template-columns: 1fr; /* tylko jedna kolumna */
+    gap: 20px;                  /* odstęp między kafelkami */
+}
+
+/* Kafelek (link-box) */
+.link-box {
+    max-width: 900px;    /* dostosuj do potrzeb */
+    width: 100%;
+    margin: 0 auto;      /* wyśrodkowanie */
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+/* Efekt powiększenia przy hoverze (opcjonalnie) */
+.link-box:hover {
+    transform: scale(1.02);
+}
+
+.link-box h4 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+/* Tekst opisowy, domyślnie ukryty */
+.link-description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0 70px 0;
+    max-height: 0;            /* wys. 0 => ukryty */
+    overflow: hidden;         /* zapobiega widocznemu tekstowi */
+    opacity: 0;               /* przezroczysty */
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/*
+Na hover .link-box -> odkryj tekst:
+ustawiamy max-height wystarczająco dużą wartość na
+typowy rozmiar opisu (np. 150px, 200px, itp.)
+*/
+.link-box:hover .link-description {
+    max-height: 200px;
+    opacity: 1;
+    margin-bottom: 15px; /* spacing pod opisem */
+}
+
+.links-actions {
+    display: flex;
+    flex-wrap: wrap;      /* by ewentualnie łamało się w mniejszych ekranach */
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;     /* odstęp nad przyciskami */
+}
+
+/* Przyciski z przyjemnym gradientem, zachowujące dotychczasowe odcienie */
+
+/* 1) Podstawowa klasa action-btn (bazowy niebieski) */
+.action-btn {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #496c49 0%, #5f7d5f 100%);
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    border: none;
+}
+.action-btn:hover {
+    background: linear-gradient(90deg, #3e5e3e 0%, #537253 100%);
+}
+
+

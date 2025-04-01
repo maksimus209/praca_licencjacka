@@ -1,87 +1,63 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const brandDropdown = document.getElementById("brandDropdown");
-    const brandListItems = brandDropdown.querySelectorAll("li");
-
+document.addEventListener("DOMContentLoaded", function () {
+    const allBrands = document.getElementById("allBrands");
     const chosenList = document.getElementById("chosenList");
     const compareBtn = document.getElementById("compareBtn");
-    const brandInputs = ["brand1","brand2","brand3"];
 
-    let chosenCount = 0;
+    const inputs = [
+        document.getElementById("brand1"),
+        document.getElementById("brand2"),
+        document.getElementById("brand3"),
+        document.getElementById("brand4")
+    ];
 
-    // Domyślnie pokazujemy brandDropdown (lub z przyciskiem "Wybierz markę")
-    brandDropdown.style.display = "block";
+    function updateButtonState() {
+        const selected = chosenList.querySelectorAll(".chosen-item");
+        // Aktywny dopiero, gdy wybrano >= 2
+        compareBtn.disabled = selected.length < 2;
 
-    // Kiedy klikamy w li, dodajemy do chosenList (o ile <3)
-    brandListItems.forEach(li => {
-        li.addEventListener("click", () => {
-            if (chosenCount < 3) {
-                // 1) Dodaj do chosenList (HTML)
-                const brandName = li.textContent;
-                const brandID = li.dataset.id;
-
-                // Tworzymy element w chosenList
-                const div = document.createElement("div");
-                div.classList.add("chosen-item");
-                div.textContent = brandName;
-
-                // Ewentualnie przycisk do usunięcia (X)
-                const removeBtn = document.createElement("button");
-                removeBtn.textContent = "X";
-                removeBtn.style.marginLeft = "10px";
-                removeBtn.addEventListener("click", () => {
-                    // usuwamy z chosenList
-                    chosenList.removeChild(div);
-                    // usuwamy z hidden input
-                    removeBrand(brandID);
-                    // pokazujemy li ponownie
-                    li.style.display = "block";
-                    chosenCount--;
-                    checkCompareBtn();
-                });
-                div.appendChild(removeBtn);
-                chosenList.appendChild(div);
-
-                // 2) Ustaw w hidden inputach
-                setNextAvailableBrandInput(brandID);
-
-                // 3) chowamy li z dropdowna, by nie wybierać ponownie
-                li.style.display = "none";
-                chosenCount++;
-
-                checkCompareBtn();
-            }
+        // Ustaw wartości w hidden inputach
+        selected.forEach((el, idx) => {
+            inputs[idx].value = el.dataset.id || "";
         });
+
+        // Wyczyść pozostałe inputy (gdy < 4 wybranych)
+        for (let i = selected.length; i < 4; i++) {
+            inputs[i].value = "";
+        }
+    }
+
+    // Dodawanie producenta do listy wybranych
+    allBrands.addEventListener("click", function (e) {
+        if (e.target.classList.contains("add-btn")) {
+            const brandItem = e.target.parentElement;
+            if (chosenList.children.length >= 4) return;
+
+            // Klonujemy element i przerabiamy go na "chosen-item"
+            const clone = brandItem.cloneNode(true);
+            const id = clone.dataset.id;
+            const name = brandItem.textContent.trim().replace("+", "");
+
+            clone.className = "chosen-item";
+            clone.dataset.id = id;
+            clone.innerHTML = `${name} <button class="remove-btn">×</button>`;
+            chosenList.appendChild(clone);
+
+            // Ukryj oryginalny element w górnej liście
+            brandItem.style.display = "none";
+            updateButtonState();
+        }
     });
 
-    function setNextAvailableBrandInput(id) {
-        for(let i=0; i<brandInputs.length; i++){
-            const inp = document.getElementById(brandInputs[i]);
-            if(!inp.value) {
-                inp.value = id;
-                break;
-            }
+    // Usuwanie producenta z wybranych
+    chosenList.addEventListener("click", function (e) {
+        if (e.target.classList.contains("remove-btn")) {
+            const brandItem = e.target.parentElement;
+            const id = brandItem.dataset.id;
+            // Przywracamy go w "allBrands"
+            const allOption = allBrands.querySelector(`.brand-option[data-id='${id}']`);
+            if (allOption) allOption.style.display = "inline-block";
+            brandItem.remove();
+            updateButtonState();
         }
-    }
-
-    function removeBrand(id) {
-        // znajdź w brandInputs, który input ma taką wartość i wyczyść
-        for(let i=0; i<brandInputs.length; i++){
-            const inp = document.getElementById(brandInputs[i]);
-            if(inp.value === id) {
-                inp.value = "";
-                break;
-            }
-        }
-    }
-
-    function checkCompareBtn() {
-        // jeśli co najmniej 2 brandy => compareBtn.enabled
-        let filledCount = 0;
-        for(let i=0; i<brandInputs.length; i++){
-            if(document.getElementById(brandInputs[i]).value) {
-                filledCount++;
-            }
-        }
-        compareBtn.disabled = (filledCount < 2);
-    }
+    });
 });
