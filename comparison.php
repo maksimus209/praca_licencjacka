@@ -16,6 +16,8 @@ while ($row = $res->fetch_assoc()) {
     <title>Porównywarka</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/comparison.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <header class="header">

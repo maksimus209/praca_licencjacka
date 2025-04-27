@@ -6,28 +6,131 @@
 }
 
 .comparison-results h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     text-align: center;
     margin-bottom: 30px;
-    color: #2c4794;
+    color: #424242;
+}
+
+.head {
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    text-align: center;
+    background: #f5f5f5;
+    margin-bottom: 10%;
+}
+
+.legend-info {
+    margin-bottom: 80px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 5px;
+}
+
+.filter-tools {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.filter-list label {
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s;
+}
+
+.filter-list label:hover {
+    background: #e2e8f0;
+}
+
+.filter-list input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: #2c4794;
 }
 
 .wynik-tabela {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
+/* Nagłówek funkcji AI */
+.ai-heading {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2c4794;
+    font-weight: 600;
+}
 
+/* Kontener na każdą tabelę */
 .tool-row {
-    background: #fff;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding-top: 25px;
+    margin-bottom: 40px;
+    transition: transform 0.2s ease;
+}
+
+.tool-row:hover {
+    transform: translateY(-3px);
+}
+
+/* Tabela porównawcza */
+.ai-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.ai-table th {
+    background: linear-gradient(90deg, #2c4794, #3d57a1);
+    color: #fff;
+    font-size: 1rem;
+    padding: 12px;
+}
+
+.ai-table td {
+    background-color: #f9f9f9;
     padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    font-size: 1rem;
+    color: #333;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+/* Efekt hover na wartościach */
+.ai-table td:hover {
+    background-color: #e2e8f0;
+    cursor: default;
+}
+
+/* Styl ostatniego wiersza bez dolnej ramki */
+.ai-table tr:last-child td {
+    border-bottom: none;
 }
 
 .tool-row strong {
@@ -37,6 +140,16 @@
 
 .tool-row span {
     font-size: 0.95rem;
+}
+
+.tool-description {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 25px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 .empty {

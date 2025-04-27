@@ -11,16 +11,10 @@
     max-width: 1500px;
     height: 100%;
     margin: 0 auto;
-    background: linear-gradient(
-            to bottom,
-            #2c4794 0%,
-            #3d57a1 40%,
-            #4762aa 100%
-    );
+    background: #F0F0F0;
     border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
-    color: #f0f0f0;
+    color: #505050;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,13 +24,13 @@
 }
 
 .compare-container h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 10px;
-    color: #fcd3d5;
+    color: #505050;
 }
 
 .compare-container p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-bottom: 20px;
     max-width: 800px;
     line-height: 1.5;
